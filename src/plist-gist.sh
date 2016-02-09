@@ -19,10 +19,7 @@ gist_backup_install(){
   echo -e "version of your package list privately to your GitHub Account"
   echo -e "with every package installation.\n";
 
-  echo -e "\nStep 1: Installing Gist\n"
-  yaourt -S gist-git;
-
-  echo -e "\nStep 2: Login to Gist";
+  echo -e "\nStep 1: Login to Gist";
   gist --login;
 
   echo -e "\nStep 2: Creating Backup";

@@ -9,6 +9,6 @@ Type = Package
 Target = *
 
 [Action]
-Depends = coreutils ruby
+Depends = coreutils
 When = PostTransaction
 Exec = /usr/lib/plist-gist/plist-gist.sh
