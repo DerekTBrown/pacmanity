@@ -3,7 +3,6 @@
 # plist-gist enables backup of package list to a GitHub Gist
 
 gist_backup(){
-
     # Add Ruby to PATH
     PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
@@ -12,7 +11,8 @@ gist_backup(){
 
     # Determine if Fresh Install is Needed
     if [ -z "$GIST_ID" ]; then
-      gist_backup_install
+      echo -e "\nError: Gist Backup not Setup."
+      echo -e "\nRun yaourt -S plist-gist and follow instructions."
     else
       gist_backup_update;
     fi
