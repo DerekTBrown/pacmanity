@@ -9,6 +9,6 @@ Type = Package
 Target = *
 
 [Action]
-Depends = coreutils
+Depends = coreutils ruby
 When = PostTransaction
-Exec = /bin/bash -c 'source "/usr/lib/plist-gist/plist-gist.sh"; gist_backup'
+Exec = /usr/lib/plist-gist/plist-gist.sh
