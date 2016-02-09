@@ -15,6 +15,7 @@ package() {
 
   # Install Save file
   mkdir -p $pkgdir/etc/
+  touch $pkgdir/etc/plist-gist
 
   # Install Script
   mkdir -p $pkgdir/usr/lib/plist-gist

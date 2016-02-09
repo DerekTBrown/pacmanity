@@ -38,11 +38,13 @@ gist_backup_install(){
 }
 
 gist_backup_update(){
+  echo -e "\n TEST: $GIST_ID";
+
   echo -e "\nUpdating Package List Backup...";
   if pacman -Qq | gist -u "$GIST_ID"; then
     echo -e "Success!\n";
   else
-    error -e "An error has occured.\nTry running gist --login.";
+    echo -e "An error has occured.\nTry running yaourt -S plist-gist";
   fi
 
 }
