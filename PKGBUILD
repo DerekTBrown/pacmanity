@@ -16,6 +16,7 @@ package() {
   # Install Save file
   mkdir -p $pkgdir/etc/
   touch $pkgdir/etc/plist-gist
+  chmod +rwx $pkgdir/etc/plist-gist
 
   # Install Script
   mkdir -p $pkgdir/usr/lib/plist-gist
@@ -26,9 +27,6 @@ package() {
   mkdir -p $pkgdir/usr/share/libalpm/hooks
   cp $srcdir/$pkgname/src/plist-gist.hook $pkgdir/usr/share/libalpm/hooks/plist-gist.hook
 
-}
-
-postinstall(){
   source /usr/lib/plist-gist/plist-gist.sh; gist_backup_install;
 
 }
