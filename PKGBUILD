@@ -27,6 +27,6 @@ package() {
   mkdir -p $pkgdir/usr/share/libalpm/hooks
   cp $srcdir/$pkgname/src/plist-gist.hook $pkgdir/usr/share/libalpm/hooks/plist-gist.hook
 
-  source /usr/lib/plist-gist/plist-gist.sh; gist_backup_install;
+  source $pkgdir/usr/lib/plist-gist/plist-gist.sh; gist_backup_install;
 
 }
