@@ -11,4 +11,4 @@ Target = *
 [Action]
 Depends = coreutils
 When = PostTransaction
-Exec = /usr/lib/plist-gist/plist-gist.sh
+Exec = source "/usr/lib/plist-gist/plist-gist.sh"; gist_backup

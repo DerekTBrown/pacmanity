@@ -11,11 +11,6 @@ makedepends=('git')
 source=("$pkgname::git+https://github.com/DerekTBrown/plist-gist.git")
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --tags | sed 's|-|.|g'
-}
-
 package() {
 
   # Install Save file
@@ -24,11 +19,11 @@ package() {
 
   # Install Script
   mkdir -p $pkgdir/usr/lib/plist-gist
-  cp $srcdir/src/plist-gist.sh $pkgdir/usr/lib/plist-gist/plist-gist.sh
+  cp $srcdir/$pkgname/src/plist-gist.sh $pkgdir/usr/lib/plist-gist/plist-gist.sh
   chmod +x $pkgdir/usr/lib/plist-gist/plist-gist.sh
 
   # Install Hook
   mkdir -p $pkgdir/usr/share/libalpm/hooks
-  cp $srcdir/src/plist-gist.hook $pkgdir/usr/share/libalpm/hooks/plist-gist.hook
+  cp $srcdir/$pkgname/src/plist-gist.hook $pkgdir/usr/share/libalpm/hooks/plist-gist.hook
 
 }
