@@ -4,6 +4,10 @@
 
 gist_backup(){
 
+    # Add Ruby to PATH
+    PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+
+    # Load Config
     [[ -r '/etc/plist-gist' ]] && source '/etc/plist-gist'
 
     # Determine if Fresh Install is Needed
