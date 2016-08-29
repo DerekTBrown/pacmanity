@@ -25,6 +25,7 @@ gist_backup_install(){
 
   echo -e "\nStep 1: Login to Gist";
   gist --login;
+  mkdir -p $pkgdir/root;
   cp ~/.gist $pkgdir/root/.gist;
 
   echo -e "\nStep 2: Creating Backup";
