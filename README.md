@@ -19,7 +19,9 @@ $ sudo pacman -U pacmanity-version
 
 **2) Setup stage:**
 
-A
+On the installing stage you will be prompted to fill in GitHub credentials two times;
+1) first time it is needed to create gist for pacman-installed packages on GItHub;
+2) second time gist with AUR-installed packages should be set up, that is why the login details should be filled in once again
 
 ## Usage
 
