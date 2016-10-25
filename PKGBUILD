@@ -1,31 +1,31 @@
-# Maintainer: Derek Brown <derekbro@andrew.cmu.edu>
-pkgname=plist-gist
+# Maintainer: Alex Chernokun <alexchernokun@gmail.com>
+pkgname=pacmanity
 pkgver=0.1
 pkgrel=1
-pkgdesc="Automatically saves package list to Gist"
-url="https://github.com/DerekTBrown/plist-gist"
+pkgdesc="Saves the list of packages installed via pacman and yaourt"
+url="https://github.com/alexchernokun/pacmanity"
 arch=('x86_64' 'i686')
 license=('GPL')
 depends=('pacman>=5.0' 'gist-git>=4.5.0')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/DerekTBrown/plist-gist.git")
+source=("$pkgname::git+https://github.com/alexchernokun/pacmanity.git")
 md5sums=('SKIP')
 
 package() {
 
   # Install Save file
   mkdir -p $pkgdir/etc/
-  touch $pkgdir/etc/plist-gist
+  touch $pkgdir/etc/pacmanity
 
   # Install Script
-  mkdir -p $pkgdir/usr/lib/plist-gist
-  cp $srcdir/$pkgname/src/plist-gist.sh $pkgdir/usr/lib/plist-gist/plist-gist.sh
-  chmod +x $pkgdir/usr/lib/plist-gist/plist-gist.sh
+  mkdir -p $pkgdir/usr/lib/pacmanity
+  cp $srcdir/$pkgname/source/pacmanity.sh $pkgdir/usr/lib/pacmanity/pacmanity.sh
+  chmod +x $pkgdir/usr/lib/pacmanity/pacmanity.sh
 
   # Install Hook
   mkdir -p $pkgdir/usr/share/libalpm/hooks
-  cp $srcdir/$pkgname/src/plist-gist.hook $pkgdir/usr/share/libalpm/hooks/plist-gist.hook
+  cp $srcdir/$pkgname/source/pacmanity.hook $pkgdir/usr/share/libalpm/hooks/pacmanity.hook
 
-  source $pkgdir/usr/lib/plist-gist/plist-gist.sh; gist_backup_install;
+  source $pkgdir/usr/lib/pacmanity/pacmanity.sh; pacmanity_install;
 
 }
