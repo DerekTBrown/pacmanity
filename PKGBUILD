@@ -27,6 +27,7 @@ package() {
   # Install Hook
   mkdir -p $pkgdir/usr/share/libalpm/hooks
   cp $srcdir/$pkgname/src/pacmanity.hook $pkgdir/usr/share/libalpm/hooks/pacmanity.hook
+  cp $srcdir/$pkgname/src/pacmanity_aur.hook $pkgdir/usr/share/libalpm/hooks/pacmanity_aur.hook
 
   source $pkgdir/usr/lib/pacmanity/pacmanity.sh; pacmanity_install;
 
