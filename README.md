@@ -30,9 +30,8 @@ Every time you install or remove a package using official Arch repository or uno
 
 
 <details> 
-  <summary>Q1: What is the best Language in the World? </summary>
-   A1: JavaScript 
+  <summary>And now for something completely different:</summary>
+    ![bachmanity](https://pbs.twimg.com/media/Cjegi2dVAAEOU2n.jpg) 
 </details>
 
-*P.S.: and now for something completely different:*
-![bachmanity](https://pbs.twimg.com/media/Cjegi2dVAAEOU2n.jpg)
+*P.S.: :*
