@@ -1,6 +1,6 @@
 # Pacmanity
 List of packages installed via pacman and yaourt on your Arch machine automatically saved to GitHub.
-\n*all ideas and improvments are always welcome!*
+> *all ideas and improvments are always welcome!*
 
 
 ## Installation
