@@ -1,10 +1,10 @@
 # Pacmanity
-List of packages installed via pacman and yaourt in your Arch Linux system.
+List of packages installed via pacman and yaourt on your Arch machine automatically saved to GitHub.
 
 ## Installation
 **1) Downloading and installing:**
 
-- using yaourt
+- using yaourt [Aur](https://aur.archlinux.org/packages/pacmanity/)
 ```
 $ yaourt pacmanity
 ```
@@ -25,6 +25,7 @@ On the installing stage you will be prompted to fill in GitHub credentials two t
 
 ## Usage
 
+Every time you install or remove a package using official Arch repository or unofficial (AUR)
 
 
 
