@@ -1,2 +1,2 @@
 # Pacmanity
-Packages which were installed via pacman and yaourt
+Packages which installed via pacman and yaourt in your Arch Linux
