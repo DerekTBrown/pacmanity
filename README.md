@@ -1,6 +1,9 @@
 # Pacmanity
-Packages which installed via pacman and yaourt in your Arch Linux
+List of packages installed via pacman and yaourt in your Arch Linux system.
 
+### Installation
+
+### Usage
 
 *P.S.: and now for something completely different:*
-![GitHub Logo](https://pbs.twimg.com/media/Cjegi2dVAAEOU2n.jpg)
+![bachmanity](https://pbs.twimg.com/media/Cjegi2dVAAEOU2n.jpg)
