@@ -20,7 +20,7 @@ pacmanity_aur(){
 
 pacmanity_aur_install(){
   echo -e "\nApps installed via 'yaourt' command will be"
-  echo -e "saved to the second package list privately to your GitHub Account";
+  echo -e "saved to the second package list privately to your GitHub Account.";
 
   echo -e "\nStep 1: Fill in GitHub credentials one more time"
   echo -e "to create the second list with yaourt-installed apps";
@@ -34,7 +34,7 @@ pacmanity_aur_install(){
   echo "GIST_ID=$GIST_URL" | sed 's/https:\/\/gist.github.com\///g' >> $pkgdir/etc/pacmanity_aur;
 
   echo -e "\nYour package list is safely backed up, and will be updated"
-  echo -e "automatically every time you install/remove a package using the yaourt,"
+  echo -e "automatically every time you install/remove a package using the yaourt."
   echo -e "You can view your backup lists at https://gist.github.com/user"
   echo -e "or directly at the link below:\n";
   echo "$GIST_URL";
