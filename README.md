@@ -1,11 +1,14 @@
 # Pacmanity
 List of packages installed via pacman and yaourt in your Arch Linux system.
 
-### Installation
+## Installation
+**1) Downloading and installing:**
+
 - using yaourt
 ```
 $ yaourt pacmanity
 ```
+
 - using makepkg
 ```
 $ wget https://github.com/alexchernokun/pacmanity/tarball/master -O - | tar xz
@@ -14,8 +17,12 @@ $ makepkg
 $ sudo pacman -U pacmanity-version
 ```
 
-### Usage
-0f
+**2) Setup stage:**
+
+A
+
+## Usage
+
 
 
 
