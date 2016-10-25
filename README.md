@@ -1,6 +1,6 @@
 # Pacmanity
 List of packages installed via pacman and yaourt on your Arch machine automatically saved to GitHub.
-> all ideas and improvments are always welcome!
+*all ideas and improvments are always welcome!*
 
 
 ## Installation
@@ -21,7 +21,6 @@ $ sudo pacman -U pacmanity-version
 ```
 
 **2) Setup stage:**
-http://image.prntscr.com/imahttp://image.prntscr.com/image/3d945ff4d17e460a99dd1382cfb8689d.pngge/3d945ff4d17e460a99dd1382cfb8689d.png
 On the installation stage you will be prompted to fill in GitHub credentials two times;
 1) first time it is needed to create gist for pacman-installed packages on GItHub;
 2) second time gist with AUR-installed packages should be set up, that is why the login details should be filled in once again
@@ -39,7 +38,7 @@ Navigate to your Gist GitHub account here and you will see:
 ![pacman](http://image.prntscr.com/image/cf15521e7b794acdb37b2a8bc5e4455c.png)
 - list of packages installed from AUR with yaourt:
 ![AUR](http://image.prntscr.com/image/d5bb89e7020d4b18a236d94adf3eb32f.png)
-- -eEvery installation will be automatically added to the gist:
+- -every installation will be automatically added to the gist:
 ![after_installation](http://image.prntscr.com/image/65eeb152529e4b1dbab78de777074679.png)
 - every removal also will be mentioned on the list:
 ![after_removal](http://image.prntscr.com/image/3d945ff4d17e460a99dd1382cfb8689d.png)
