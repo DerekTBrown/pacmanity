@@ -42,7 +42,7 @@ Navigate to your Gist GitHub account here and you will see:
 ![pacman](http://image.prntscr.com/image/cf15521e7b794acdb37b2a8bc5e4455c.png)
 - list of packages installed from AUR with yaourt:
 ![AUR](http://image.prntscr.com/image/d5bb89e7020d4b18a236d94adf3eb32f.png)
-- -every installation will be automatically added to the gist:
+- every installation will be automatically added to the gist:
 ![after_installation](http://image.prntscr.com/image/65eeb152529e4b1dbab78de777074679.png)
 - every removal also will be mentioned on the list:
 ![after_removal](http://image.prntscr.com/image/3d945ff4d17e460a99dd1382cfb8689d.png)
