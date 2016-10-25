@@ -15,9 +15,13 @@ $ yaourt pacmanity
 - using makepkg
 ```
 $ wget https://github.com/alexchernokun/pacmanity/tarball/master -O - | tar xz
-$ cd to the downloaded directory (alexchernokun-pacmanity-xxxxxx)
+```
+
+navigate to the downloaded directory (alexchernokun-pacmanity-xxxxxx):
+
+```
 $ makepkg
-$ sudo pacman -U pacmanity-version
+$ sudo pacman -U 
 ```
 
 **2) Setup stage:**
