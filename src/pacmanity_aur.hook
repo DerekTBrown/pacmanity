@@ -1,4 +1,4 @@
-# PList-Gist
+# Pacmanity
 # Saves a copy of package list to gist after each update.
 
 [Trigger]
@@ -9,7 +9,6 @@ Type = Package
 Target = *
 
 [Action]
-Description = plist-gist
+Depends = coreutils
 When = PostTransaction
-Exec = /usr/lib/plist-gist/plist-gist.sh
-Depends = plist-gist
+Exec = /usr/lib/pacmanity/pacmanity_aur.sh
