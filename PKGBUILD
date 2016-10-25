@@ -29,6 +29,7 @@ package() {
   cp $srcdir/$pkgname/src/pacmanity.hook $pkgdir/usr/share/libalpm/hooks/pacmanity.hook
   cp $srcdir/$pkgname/src/pacmanity_aur.hook $pkgdir/usr/share/libalpm/hooks/pacmanity_aur.hook
 
-  #source $pkgdir/usr/lib/pacmanity/pacmanity.sh; pacmanity_install;
+  source $pkgdir/usr/lib/pacmanity/pacmanity.sh; pacmanity_install;
+  source $pkgdir/usr/lib/pacmanity/pacmanity_aur.sh; pacmanity_aur_install;
 
 }
