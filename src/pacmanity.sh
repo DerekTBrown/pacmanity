@@ -20,7 +20,7 @@ pacmanity(){
 
 pacmanity_install(){
   echo -e "\nApps installed via 'pacman -S' command will be"
-  echo -e "saved to the first package list privately to your GitHub Account";
+  echo -e "saved to the first package list privately to your GitHub Account.";
 
   echo -e "\nStep 1: Login to Gist GitHub";
   gist --login;
@@ -33,7 +33,7 @@ pacmanity_install(){
   echo "GIST_ID=$GIST_URL" | sed 's/https:\/\/gist.github.com\///g' >> $pkgdir/etc/pacmanity;
 
   echo -e "\nYour package list is safely backed up, and will be updated"
-  echo -e "automatically every time you install/remove a package using the yaourt,"
+  echo -e "automatically every time you install/remove a package using the pacman."
   echo -e "You can view your backup lists at https://gist.github.com/user"
   echo -e "or directly at the link below:\n";
   echo "$GIST_URL";
