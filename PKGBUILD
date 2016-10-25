@@ -19,12 +19,14 @@ package() {
 
   # Install Script
   mkdir -p $pkgdir/usr/lib/pacmanity
-  cp $srcdir/$pkgname/source/pacmanity.sh $pkgdir/usr/lib/pacmanity/pacmanity.sh
+  cp $srcdir/$pkgname/src/pacmanity.sh $pkgdir/usr/lib/pacmanity/pacmanity.sh
   chmod +x $pkgdir/usr/lib/pacmanity/pacmanity.sh
+  cp $srcdir/$pkgname/src/pacmanity.sh $pkgdir/usr/lib/pacmanity/pacmanity_aur.sh
+  chmod +x $pkgdir/usr/lib/pacmanity/pacmanity_aur.sh
 
   # Install Hook
   mkdir -p $pkgdir/usr/share/libalpm/hooks
-  cp $srcdir/$pkgname/source/pacmanity.hook $pkgdir/usr/share/libalpm/hooks/pacmanity.hook
+  cp $srcdir/$pkgname/src/pacmanity.hook $pkgdir/usr/share/libalpm/hooks/pacmanity.hook
 
   source $pkgdir/usr/lib/pacmanity/pacmanity.sh; pacmanity_install;
 
