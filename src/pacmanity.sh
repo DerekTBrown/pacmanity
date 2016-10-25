@@ -11,36 +11,36 @@ pacmanity(){
 
     # Determine if Fresh Install is Needed
     if [ -z "$GIST_ID" ]; then
-      echo -e "\nError: Gist Backup not Setup."
-      echo -e "\nRun yaourt -S pacmanity and follow instructions."
+      echo -e "\nInfo: Gist backup for pacman-installed apps not setup."
+      echo -e "\nYou need to use your GitHub credentials to log into GitHub Gist."
     else
       pacmanity_update;
     fi
 }
 
 pacmanity_install(){
-  echo -e "\nGist Backup is a alpm hook which saves an updated"
-  echo -e "version of your package list privately to your GitHub Account"
-  echo -e "with every package installation.\n";
+  echo -e "\nApps installed via 'pacman -S' command will be"
+  echo -e "saved to the first package list privately to your GitHub Account";
 
-  echo -e "\nStep 1: Login to Gist";
+  echo -e "\nStep 1: Login to Gist GitHub";
   gist --login;
   mkdir -p $pkgdir/root;
   cp ~/.gist $pkgdir/root/.gist;
 
-  echo -e "\nStep 2: Creating Backup";
+  echo -e "\nStep 2: Creating list with pacman-installed apps";
   GIST_URL=$(pacman -Qqen | gist -p -f arch_pacman -d "Arch Packages installed via pacman")
 
   echo "GIST_ID=$GIST_URL" | sed 's/https:\/\/gist.github.com\///g' >> $pkgdir/etc/pacmanity;
 
   echo -e "\nYour package list is safely backed up, and will be updated"
-  echo -e "automatically every time you install a package using a package manager,"
-  echo -e "You can view your backup at the link below:\n";
+  echo -e "automatically every time you install/remove a package using the yaourt,"
+  echo -e "You can view your backup lists at https://gist.github.com/user"
+  echo -e "or directly at the link below:\n";
   echo "$GIST_URL";
 }
 
 pacmanity_update(){
-  echo -e "\nUpdating Package List Backup...";
+  echo -e "\nUpdating package list backup on GitHub...";
   if pacman -Qqen | gist -u "$GIST_ID"; then
     echo -e "Success!\n";
   else
