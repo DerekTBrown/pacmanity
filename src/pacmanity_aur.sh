@@ -7,7 +7,7 @@ pacmanity_aur(){
     PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
     # Load Config
-    [[ -r '/etc/pacmanity_aur' ]] && source $pkgdir/etc/pacmanity_aur
+    [[ -r '/etc/pacmanity' ]] && source $pkgdir/etc/pacmanity
 
     # Determine if Fresh Install is Needed
     if [ -z "$GIST_ID" ]; then
