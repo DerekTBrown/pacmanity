@@ -24,7 +24,7 @@ package() {
 
   # Install Hook
   mkdir -p $pkgdir/usr/share/libalpm/hooks
-  cp $srcdir/$pkgname/src/plist-gist.hook $pkgdir/usr/share/libalpm/hooks/plist-gist.hook
+  cp $srcdir/$pkgname/src/plist-gist.hook $pkgdir/usr/share/libalpm/hooks/zzz-plist-gist.hook
 
   source $pkgdir/usr/lib/plist-gist/plist-gist.sh; gist_backup_install;
 
