@@ -8,7 +8,7 @@ arch=('x86_64' 'i686')
 license=('GPL')
 depends=('pacman>=5.0' 'gist-git>=4.5.0')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/alexchernokun/pacmanity.git")
+source=("$pkgname::git+https://github.com/Atomicwerks/pacmanity.git")
 md5sums=('SKIP')
 
 package() {

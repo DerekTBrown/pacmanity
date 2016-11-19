@@ -29,7 +29,7 @@ pacmanity_aur_install(){
   cp ~/.gist $pkgdir/root/.gist;
 
   echo -e "\nStep 2: Creating list with yaourt-installed apps";
-  GIST_URL=$(pacman -Qqem | gist -p -f arch_yaourt -d "Arch Packages installed from AUR")
+  GIST_URL=$(pacman -Qqem | gist -p -f $HOSTNAME-yaourt -d "$HOSTNAME: Packages installed from AUR")
 
   echo "GIST_ID=$GIST_URL" | sed 's/https:\/\/gist.github.com\///g' >> $pkgdir/etc/pacmanity_aur;
 
