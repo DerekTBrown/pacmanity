@@ -28,7 +28,7 @@ pacmanity_install(){
   cp ~/.gist $pkgdir/root/.gist;
 
   echo -e "\nStep 2: Creating list with pacman-installed apps";
-  GIST_URL=$(pacman -Qqen | gist -p -f $HOSTNAME-pacman -d "$HOSTNAME: Packages installed via pacman")
+  GIST_URL=$(pacman -Qqen | gist -p -f "$HOSTNAME-pacman" -d "$HOSTNAME: Packages installed via pacman")
 
   echo "GIST_ID=$GIST_URL" | sed 's/https:\/\/gist.github.com\///g' >> $pkgdir/etc/pacmanity;
 
