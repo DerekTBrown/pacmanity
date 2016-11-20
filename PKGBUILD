@@ -16,7 +16,7 @@ package() {
   # Install and save file
   mkdir -p $pkgdir/etc/
   touch $pkgdir/etc/pacmanity
-  
+  touch $pkgdir/etc/pacmanity_aur
   # Install script
   mkdir -p $pkgdir/usr/lib/pacmanity
   cp $srcdir/$pkgname/src/pacmanity.sh $pkgdir/usr/lib/pacmanity/pacmanity.sh
