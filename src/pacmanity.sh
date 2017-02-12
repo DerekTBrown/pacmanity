@@ -58,7 +58,7 @@ pacmanity_update(){
     if pacman -Qqen > pkglist.dat && git init && git add pkglist.dat && git commit -m "[Pacmanity]: updated pacman packages." && git remote add origin $GIT_REMOTE && git push -u origin master:$HOSTNAME; then
       echo -e "Success!\n";
     else
-      echo -e "An error occured.\nTry running `sudo git push <repo> master`.";
+      echo -e "An error occured.\nTry running the commands yourself.";
     fi
   else
     echo -e "[Pacmanity]: Updating package list backup on GitHub™ Gist";
