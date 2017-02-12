@@ -53,7 +53,7 @@ pacmanity_install(){
 
 pacmanity_update(){
   cd $HOME/Packages;
-  if [[ "$GIT_REMOTE" =~ '((git|ssh|rsync|http(s)?)|((git|gogs|[a-z]+)@[\w\.]+)|(file))(:(//)?)([\w\.@\:/\-~]+)(\.git)(/)?' ]]; then
+  if [ "$GIT_REMOTE" ]; then
     echo -e "[Pacmanity]: Updating package list backup on $GIT_REMOTE";
     if pacman -Qqen > pkglist.dat && git init && git add pkglist.dat && git commit -m "[Pacmanity]: updated pacman packages." && git remote add origin $GIT_REMOTE && git push -u origin $HOSTNAME; then
       echo -e "Success!\n";
