@@ -6,7 +6,7 @@ pkgdesc="Saves the list of packages installed via pacman and yaourt to your Gith
 url="https://github.com/alexchernokun/pacmanity"
 arch=('x86_64' 'i686')
 license=('GPL')
-depends=('pacman>=5.0' 'gist-git>=4.5.0')
+depends=('pacman>=5.0' 'gist>=4.5.0')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/Atomicwerks/pacmanity.git")
 md5sums=('SKIP')
