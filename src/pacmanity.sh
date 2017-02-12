@@ -39,11 +39,7 @@ pacmanity_install(){
   else
     if [ ! -d $HOME/Packages ]; then mkdir $HOME/Packages; fi
     echo -e "\n Using a pure Git remote instead."
-    while [[ ! "$GIT_REMOTE" =~ '((git|ssh|rsync|http(s)?)|((git|gogs|[a-z]+)@[\w\.]+)|(file))(:(//)?)([\w\.@\:/\-~]+)(\.git)(/)?' ]]
-    do
-      echo -e "\nPlease enter a valid blank Git remote: ";
-      read GIT_REMOTE
-    done
+    read -p "\nPlease enter a valid blank Git remote: " GIT_REMOTE
     echo "GIT_REMOTE=$GIT_REMOTE" >> $pkgdir/etc/pacmanity;
     pacmanity_update;
   fi
