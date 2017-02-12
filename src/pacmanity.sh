@@ -9,12 +9,17 @@ pacmanity(){
     # Load Config
     [[ -r '/etc/pacmanity' ]] && source $pkgdir/etc/pacmanity
 
+    # Determine if gist or pure git.
+    if [ -z "$GIT_REMOTE" ]; then
+        echo -e "[Pacmanity]: Pure git remote not yet set."
+        echo -e '[Pacmanity]: You need to set $GIT_REMOTE in /etc/pacmanity or alternatively set $GIST_ID to use Gist as a backend.'
     # Determine if Fresh Install is Needed
-    if [ -z "$GIST_ID" ]; then
-      echo -e "\nInfo: Gist backup for pacman-installed apps not setup."
-      echo -e "\nYou need to use your GitHub credentials to log into GitHub Gist."
-    else
-      pacmanity_update;
+    else if [ -z "$GIST_ID" ]; then
+        echo -e "[Pacmanity]: Gist backup for pacman-installed apps not setup."
+        echo -e "[Pacmanity]: You need to use your GitHub credentials to log into GitHub Gist."
+      else
+        pacmanity_update;
+      fi
     fi
 }
 
@@ -22,15 +27,26 @@ pacmanity_install(){
   echo -e "\nApps installed via 'pacman -S' command will be"
   echo -e "saved to the first package list privately to your GitHub Account.";
 
-  echo -e "\nStep 1: Login to Gist GitHub";
-  gist --login;
-  mkdir -p $pkgdir/root;
-  cp ~/.gist $pkgdir/root/.gist;
-
-  echo -e "\nStep 2: Creating list with pacman-installed apps";
-  GIST_URL=$(pacman -Qqen | gist -p -f $HOSTNAME.pacman -d "$HOSTNAME: Packages installed via pacman")
-
-  echo "GIST_ID=$GIST_URL" | sed 's/https:\/\/gist.github.com\///g' >> $pkgdir/etc/pacmanity;
+  echo -e "\nStep 1: use GitHub™’s Gist (y/n)?";
+  read answer
+  if echo "$answer" | grep -iq "^y" ;then
+    gist --login;
+    mkdir -p $pkgdir/root;
+    cp ~/.gist $pkgdir/root/.gist;
+    echo -e "\nStep 2: Creating list with pacman-installed apps";
+    GIST_URL=$(pacman -Qqen | gist -p -f $HOSTNAME.pacman -d "$HOSTNAME: Packages installed via pacman")
+    echo "GIST_ID=$GIST_URL" | sed 's/https:\/\/gist.github.com\///g' >> $pkgdir/etc/pacmanity;
+  else
+    if [ ! -d $HOME/Packages ]; then mkdir $HOME/Packages; fi
+    echo -e "\n Using a pure Git remote instead."
+    while [[ ! "$GIT_REMOTE" =~ '((git|ssh|rsync|http(s)?)|((git|gogs|[a-z]+)@[\w\.]+)|(file))(:(//)?)([\w\.@\:/\-~]+)(\.git)(/)?' ]]
+    do
+      echo -e "\nPlease enter a valid blank Git remote: ";
+      read GIT_REMOTE
+    done
+    echo "GIT_REMOTE=$GIT_REMOTE" >> $pkgdir/etc/pacmanity;
+    pacmanity_update;
+  fi
 
   echo -e "\nYour package list is safely backed up, and will be updated"
   echo -e "automatically every time you install/remove a package using the pacman."
@@ -40,13 +56,22 @@ pacmanity_install(){
 }
 
 pacmanity_update(){
-  echo -e "\nUpdating package list backup on GitHub...";
-  if pacman -Qqen | gist -u "$GIST_ID"; then
-    echo -e "Success!\n";
+  cd $HOME/Packages;
+  if [[ "$GIT_REMOTE" =~ '((git|ssh|rsync|http(s)?)|((git|gogs|[a-z]+)@[\w\.]+)|(file))(:(//)?)([\w\.@\:/\-~]+)(\.git)(/)?' ]]; then
+    echo -e "[Pacmanity]: Updating package list backup on $GIT_REMOTE";
+    if pacman -Qqen > pkglist.dat && git init && git add pkglist.dat && git commit -m "[Pacmanity]: updated pacman packages." && git remote add origin $GIT_REMOTE && git push -u origin $HOSTNAME; then
+      echo -e "Success!\n";
+    else
+      echo -e "An error occured.\nTry running `sudo git push <repo> master`.";
+    fi
   else
-    echo -e "An error has occured.\nTry running sudo gist --login";
+    echo -e "[Pacmanity]: Updating package list backup on GitHub™ Gist";
+    if pacman -Qqen | gist -u "$GIST_ID"; then
+      echo -e "Success!\n";
+    else
+      echo -e "An error has occured.\nTry running sudo gist --login";
+    fi
   fi
-
 }
 
 pacmanity
