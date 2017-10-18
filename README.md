@@ -7,6 +7,7 @@ List of packages installed via pacman and yaourt on your Arch machine automatica
 
 **1) Downloading and installing:**
 
+I don't know why, but owner of plist-gist (the repo where I took the source code) requested pacmanity removal from AUR, that is why, unfortunately, the only way to install is using the makepkg method below.
 - using yaourt [Aur](https://aur.archlinux.org/packages/pacmanity/)
 ```
 $ yaourt pacmanity
