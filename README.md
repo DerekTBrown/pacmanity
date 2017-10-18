@@ -21,7 +21,7 @@ navigate to the downloaded directory (alexchernokun-pacmanity-xxxxxx):
 
 ```
 $ makepkg
-$ sudo pacman -U 
+$ sudo pacman -U
 ```
 
 **2) Setup stage:**
@@ -36,6 +36,28 @@ Every time you install or remove a package using [official Arch repository](http
 You have nothing to do, just install the pacmanity, and that's all.
 Two hooks will be created and run everytime the pacman command is used.
 
+### recovery
+
+By cloning the gist files to your fresh installed machine you can import them into pacman rather easy;
+
+![gist-clone](https://image.prntscr.com/image/ObTqDXicRk6a9h7alSIVMw.png)
+
+* pacman package list:
+
+```bash
+$ git clone git@gist.github.com:#############.git
+$ cd #############
+$ sudo pacman -S - < $(hostname).pacman
+```
+
+* AUR package list:
+
+```bash
+$ git clone git@gist.github.com:#############.git
+$ cd #############
+$ xargs <$(hostname).yaourt pacaur -S --noedit
+```
+
 **Screenshots:**
 Navigate to your Gist GitHub account here and you will see:
 - list of packages installed with 'pacman -S' command:
@@ -47,7 +69,7 @@ Navigate to your Gist GitHub account here and you will see:
 - every removal also will be mentioned on the list:
 ![after_removal](http://image.prntscr.com/image/3d945ff4d17e460a99dd1382cfb8689d.png)
 
-<details> 
+<details>
   <summary>*P.S.: : *And now for something completely different:</summary>
-    ![bachmanity](https://pbs.twimg.com/media/Cjegi2dVAAEOU2n.jpg) 
+    ![bachmanity](https://pbs.twimg.com/media/Cjegi2dVAAEOU2n.jpg)
 </details>
