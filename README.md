@@ -15,10 +15,10 @@ $ yaourt pacmanity
 
 - using makepkg
 ```
-$ wget https://github.com/alexchernokun/pacmanity/tarball/master -O - | tar xz
+$ wget https://github.com/derektbrown/pacmanity/tarball/master -O - | tar xz
 ```
 
-navigate to the downloaded directory (alexchernokun-pacmanity-xxxxxx):
+navigate to the downloaded directory (derektbrown-pacmanity-xxxxxx):
 
 ```
 $ makepkg
