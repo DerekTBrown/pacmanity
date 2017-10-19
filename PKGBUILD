@@ -1,14 +1,13 @@
-# Maintainer: Alex Chernokun <alexchernokun@gmail.com>
 pkgname=pacmanity
 pkgver=0.1
 pkgrel=1
 pkgdesc="Saves the list of packages installed via pacman and yaourt to your Github gist"
-url="https://github.com/alexchernokun/pacmanity"
+url="https://github.com/DerekTBrown/pacmanity"
 arch=('x86_64' 'i686')
 license=('GPL')
 depends=('pacman>=5.0' 'gist-git>=4.5.0')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/Atomicwerks/pacmanity.git")
+source=("$pkgname::git+https://github.com/DerekTBrown/pacmanity.git")
 md5sums=('SKIP')
 
 package() {
