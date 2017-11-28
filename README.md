@@ -1,18 +1,14 @@
 # Pacmanity
 List of packages installed via pacman and yaourt on your Arch machine automatically saved to GitHub.
-> *all ideas and improvments are always welcome!*
-
 
 ## Installation
 
 **1) Downloading and installing:**
 
-I don't know why, but owner of plist-gist (the repo where I took the source code) requested pacmanity removal from AUR, that is why, unfortunately, the only way to install is using the makepkg method below.
 - using yaourt [Aur](https://aur.archlinux.org/packages/pacmanity/)
 ```
 $ yaourt pacmanity
 ```
-
 - using makepkg
 ```
 $ wget https://github.com/derektbrown/pacmanity/tarball/master -O - | tar xz
@@ -70,7 +66,3 @@ Navigate to your Gist GitHub account here and you will see:
 - every removal also will be mentioned on the list:
 ![after_removal](http://image.prntscr.com/image/3d945ff4d17e460a99dd1382cfb8689d.png)
 
-<details>
-  <summary>*P.S.: : *And now for something completely different:</summary>
-    ![bachmanity](https://pbs.twimg.com/media/Cjegi2dVAAEOU2n.jpg)
-</details>
