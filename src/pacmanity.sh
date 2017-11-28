@@ -41,7 +41,7 @@ pacmanity_install(){
 
 pacmanity_update(){
   echo -e "\nUpdating package list backup on GitHub...";
-  if pacman -Qqen | gist -u "$GIST_ID"; then
+  if pacman -Qqen | gist -u "$GIST_ID" -f $HOSTNAME.pacman; then
     echo -e "Success!\n";
   else
     echo -e "An error has occured.\nTry running sudo gist --login";

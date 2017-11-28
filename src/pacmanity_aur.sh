@@ -42,7 +42,7 @@ pacmanity_aur_install(){
 
 pacmanity_aur_update(){
   echo -e "\nUpdating package list backup on GitHub...";
-  if pacman -Qqem | gist -u "$GIST_ID"; then
+  if pacman -Qqem | gist -u "$GIST_ID" -f $HOSTNAME.yaourt; then
     echo -e "Success!\n";
   else
     echo -e "An error has occured.\nTry running sudo gist --login";
