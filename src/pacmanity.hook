@@ -9,7 +9,7 @@ Type = Package
 Target = *
 
 [Action]
-Description = Run Pacmanity hook
+Description = Running Pacmanity hook...
 Depends = coreutils
 When = PostTransaction
 Exec = /usr/lib/pacmanity/pacmanity.sh
