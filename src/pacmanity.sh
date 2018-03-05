@@ -20,7 +20,7 @@ pacmanity_install(){
     cp ~/.gist $pkgdir/root/.gist
 
     echo -e "\n- Step 2: Save list of currently installed packages to Gist:"
-    pacmanity
+    GIST_URL=$(pacmanity)
 
     echo "GIST_ID=$GIST_URL" | sed 's/https:\/\/gist.github.com\///g' >> $pkgdir/etc/pacmanity
 
