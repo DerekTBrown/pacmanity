@@ -29,14 +29,7 @@ pacmanity_install(){
 }
 
 pacmanity_update(){
-    GIST_URL=$(
-        (
-            pacman -Qqen
-            echo
-            pacman -Qqem
-        ) | gist -u "$GIST_ID" -f $HOSTNAME.pacmanity
-    )
-    if $GIST_URL; then
+    if (pacman -Qqen; echo; pacman -Qqem) | gist -u "$GIST_ID" -f $HOSTNAME.pacmanity; then
         echo "Pacmanity: OK!"
     else
         echo "Pacmanity: ERROR! Try running"
