@@ -15,21 +15,17 @@ package() {
   # Install and save file
   mkdir -p $pkgdir/etc/
   touch $pkgdir/etc/pacmanity
-  touch $pkgdir/etc/pacmanity_aur
 
   # Install script
   mkdir -p $pkgdir/usr/lib/pacmanity
-  cp $srcdir/pacmanity/src/pacmanity.sh $pkgdir/usr/lib/pacmanity/pacmanity.sh
+  cp $srcdir/pacmanity.sh $pkgdir/usr/lib/pacmanity/pacmanity.sh
   chmod +x $pkgdir/usr/lib/pacmanity/pacmanity.sh
-  cp $srcdir/pacmanity/src/pacmanity_aur.sh $pkgdir/usr/lib/pacmanity/pacmanity_aur.sh
-  chmod +x $pkgdir/usr/lib/pacmanity/pacmanity_aur.sh
 
   # Install Hook
   mkdir -p $pkgdir/usr/share/libalpm/hooks
-  cp $srcdir/pacmanity/src/pacmanity.hook $pkgdir/usr/share/libalpm/hooks/zzz-pacmanity.hook
-  cp $srcdir/pacmanity/src/pacmanity_aur.hook $pkgdir/usr/share/libalpm/hooks/zzz-pacmanity_aur.hook
+  cp $srcdir/pacmanity.hook $pkgdir/usr/share/libalpm/hooks/zzz-pacmanity.hook
 
-  source $pkgdir/usr/lib/pacmanity/pacmanity.sh; pacmanity_install;
-  source $pkgdir/usr/lib/pacmanity/pacmanity_aur.sh; pacmanity_aur_install;
+  source $pkgdir/usr/lib/pacmanity/pacmanity.sh
+  pacmanity_install
 
 }
