@@ -1,68 +1,75 @@
 # Pacmanity
-List of packages installed via pacman and yaourt on your Arch machine automatically saved to GitHub.
+Keeps a list of installed packages in a Gist at your GitHub account.
 
 ## Installation
 
-**1) Downloading and installing:**
+**1. Download and install:**
 
-- using yaourt [Aur](https://aur.archlinux.org/packages/pacmanity/)
+- From [AUR](https://aur.archlinux.org/packages/pacmanity/) using an AUR helper:
+```bash
+$ <aur_helper> -S pacmanity
 ```
-$ yaourt pacmanity
-```
-- using makepkg
-```
+Some popular AUR helpers are [`yaourt`](https://github.com/archlinuxfr/yaourt), [`trizen`](https://github.com/trizen/trizen) and [`yay`](https://github.com/Jguer/yay).
+
+- From [AUR](https://aur.archlinux.org/packages/pacmanity/) using `makepkg`:
+```bash
 $ wget https://github.com/derektbrown/pacmanity/tarball/master -O - | tar xz
+$ cd DerekTBrown-pacmanity-*/
+$ makepkg -si
 ```
 
-navigate to the downloaded directory (derektbrown-pacmanity-xxxxxx):
+**2. Setup:**
 
-```
-$ makepkg
-$ sudo pacman -U
-```
-
-**2) Setup stage:**
-On the installation stage you will be prompted to fill in GitHub credentials two times;
-1) first time it is needed to create gist for pacman-installed packages on GItHub;
-2) second time gist with AUR-installed packages should be set up, that is why the login details should be filled in once again
+During the installation of the package you will be prompted to log in to your GitHub account.
 
 
 ## Usage
 
-Every time you install or remove a package using [official Arch repository](https://www.archlinux.org/packages/) or unofficial [AUR](https://aur.archlinux.org/) all the changes will be saved privately to your GitHub account.
-You have nothing to do, just install the pacmanity, and that's all.
-Two hooks will be created and run everytime the pacman command is used.
+Once installed, Pacmanity automatically maintains a list of your installed packages in a private Gist at your GitHub account.
 
-### recovery
+The list gets updated every time you install, update or remove packages, keeping track of the current explicitly installed packages from both Arch [official repos](https://www.archlinux.org/packages/) and [AUR](https://aur.archlinux.org/). They are listed in the Gist in that particular order (official, then AUR), separated by a blank line.
 
-By cloning the gist files to your fresh installed machine you can import them into pacman rather easy;
+No hassle: just install Pacmanity, follow the prompts and you are done.
+A pacman hook will be installed and conveniently run when needed to.
+
+## Recovery
+
+By cloning the Gist file to your fresh Arch installation you can easily bulk-install them:
 
 ![gist-clone](https://image.prntscr.com/image/ObTqDXicRk6a9h7alSIVMw.png)
 
-* pacman package list:
-
 ```bash
-$ git clone git@gist.github.com:#############.git
-$ cd #############
-$ sudo pacman -S - < $(hostname).pacman
+$ git clone git@gist.github.com:<gist_repo>.git
+$ cd <gist_repo>
 ```
 
-* AUR package list:
+- Using `pacman` to install only official packages:
 
 ```bash
-$ git clone git@gist.github.com:#############.git
-$ cd #############
-$ xargs <$(hostname).yaourt pacaur -S --noedit
+$ sed -e '/^$/q' $(hostname).pacmanity | sudo pacman -S -
 ```
 
-**Screenshots:**
-Navigate to your Gist GitHub account here and you will see:
-- list of packages installed with 'pacman -S' command:
+- Using an AUR helper to install all packages:
+
+```bash
+$ <aur_helper> -S $(tr '\n' ' ' < $(hostname).pacmanity)
+```
+
+- Using an AUR helper to install only AUR packages:
+
+```bash
+$ <aur_helper> -S $(sed -e '/^$/d' $(hostname).pacmanity | tr '\n' ' ')
+```
+
+## Screenshots
+
+Navigate to your [Gist](https://gist.github.com) in GitHub and you will find:
+- List of currently installed packages from official repos:
 ![pacman](http://image.prntscr.com/image/cf15521e7b794acdb37b2a8bc5e4455c.png)
-- list of packages installed from AUR with yaourt:
+- List of currently installed packages from AUR:
 ![AUR](http://image.prntscr.com/image/d5bb89e7020d4b18a236d94adf3eb32f.png)
-- every installation will be automatically added to the gist:
+- Every package installation will be automatically added to the Gist:
 ![after_installation](http://image.prntscr.com/image/65eeb152529e4b1dbab78de777074679.png)
-- every removal also will be mentioned on the list:
+- Every package removal will also be reported in the Gist:
 ![after_removal](http://image.prntscr.com/image/3d945ff4d17e460a99dd1382cfb8689d.png)
 

@@ -1,5 +1,5 @@
 # Pacmanity
-# Saves a copy of package list to gist after each update.
+# Keeps a list of installed packages in a Gist at your GitHub account.
 
 [Trigger]
 Operation = Install
@@ -9,6 +9,7 @@ Type = Package
 Target = *
 
 [Action]
-Description = plist-gist
+Description = Run Pacmanity hook
+Depends = coreutils gist
 When = PostTransaction
 Exec = /usr/lib/pacmanity/pacmanity.sh
