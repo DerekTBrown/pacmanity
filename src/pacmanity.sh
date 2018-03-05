@@ -15,9 +15,9 @@ pacmanity_install(){
     echo "by Pacmanity in a private Gist at your GitHub account."
 
     echo -e "\n- Step 1: Log in to Gist using your GitHub account:"
-    gist --login
+    [[ -f ~/.gist ]] || gist --login
     mkdir -p $pkgdir/root
-    cp ~/.gist $pkgdir/root/.gist
+    cp -v ~/.gist $pkgdir/root/.gist
 
     echo -e "\n- Step 2: Save list of currently installed packages to Gist:"
     GIST_URL=$(pacmanity)
@@ -32,7 +32,7 @@ pacmanity_install(){
 
 pacmanity_update(){
     if pacmanity; then
-        echo "Pacmanity: OK!\n"
+        echo "Pacmanity: OK!"
     else
         echo "Pacmanity: ERROR! Try running"
         echo "sudo gist --login"
