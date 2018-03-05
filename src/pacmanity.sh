@@ -2,14 +2,6 @@
 # Pacmanity
 # Keeps a list of installed packages in a Gist at your GitHub account.
 
-pacmanity(){
-    (
-        pacman -Qqen
-        echo
-        pacman -Qqem
-    ) | gist -p -f $HOSTNAME.pacmanity -d "$HOSTNAME: List of installed packages"
-}
-
 pacmanity_install(){
     echo "A list of installed packages will be automatically maintained"
     echo "by Pacmanity in a private Gist at your GitHub account."
@@ -20,7 +12,13 @@ pacmanity_install(){
     cp -v ~/.gist $pkgdir/root/.gist
 
     echo -e "\n- Step 2: Save list of currently installed packages to Gist:"
-    GIST_URL=$(pacmanity)
+    GIST_URL=$(
+        (
+            pacman -Qqen
+            echo
+            pacman -Qqem
+        ) | gist -p -f $HOSTNAME.pacmanity -d "$HOSTNAME: List of installed packages"
+    )
 
     echo "GIST_ID=$GIST_URL" | sed 's/https:\/\/gist.github.com\///g' >> $pkgdir/etc/pacmanity
 
@@ -31,7 +29,14 @@ pacmanity_install(){
 }
 
 pacmanity_update(){
-    if pacmanity; then
+    GIST_URL=$(
+        (
+            pacman -Qqen
+            echo
+            pacman -Qqem
+        ) | gist -u "$GIST_ID" -f $HOSTNAME.pacmanity
+    )
+    if $GIST_URL; then
         echo "Pacmanity: OK!"
     else
         echo "Pacmanity: ERROR! Try running"
