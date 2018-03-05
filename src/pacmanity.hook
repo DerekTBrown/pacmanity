@@ -10,6 +10,6 @@ Target = *
 
 [Action]
 Description = Run Pacmanity hook
-Depends = coreutils gist
+Depends = coreutils
 When = PostTransaction
 Exec = /usr/lib/pacmanity/pacmanity.sh
