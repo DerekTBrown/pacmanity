@@ -30,7 +30,7 @@ pacmanity_install(){
 
 pacmanity_update(){
     if (pacman -Qqen; echo; pacman -Qqem) | gist -u "$GIST_ID" -f $HOSTNAME.pacmanity; then
-        echo "Pacmanity: OK!"
+        echo "Pacmanity: Gist successfully updated."
     else
         echo "Pacmanity: ERROR! Try running"
         echo "sudo gist --login"
