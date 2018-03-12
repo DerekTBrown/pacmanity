@@ -1,51 +1,52 @@
 #!/bin/bash
-#
-# pacmanity generates a list of packages installed via pacman GitHub
-
-pacmanity(){
-    # Add Ruby to PATH
-    PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
-
-    # Load Config
-    [[ -r '/etc/pacmanity' ]] && source $pkgdir/etc/pacmanity
-
-    # Determine if Fresh Install is Needed
-    if [ -z "$GIST_ID" ]; then
-      echo -e "\nInfo: Gist backup for pacman-installed apps not setup."
-      echo -e "\nYou need to use your GitHub credentials to log into GitHub Gist."
-    else
-      pacmanity_update;
-    fi
-}
+# Pacmanity
+# Keeps a list of installed packages in a Gist at your GitHub account.
 
 pacmanity_install(){
-  echo -e "\nApps installed via 'pacman -S' command will be"
-  echo -e "saved to the first package list privately to your GitHub Account.";
+    echo "A list of installed packages will be automatically maintained"
+    echo "by Pacmanity in a private Gist at your GitHub account."
 
-  echo -e "\nStep 1: Login to Gist GitHub";
-  gist --login;
-  mkdir -p $pkgdir/root;
-  cp ~/.gist $pkgdir/root/.gist;
+    echo -e "\n- Step 1: Log in to Gist using your GitHub account:"
+    [[ -f ~/.gist ]] || gist --login
+    mkdir -p $pkgdir/root
+    cp -v ~/.gist $pkgdir/root/.gist
 
-  echo -e "\nStep 2: Creating list with pacman-installed apps";
-  GIST_URL=$(pacman -Qqen | gist -p -f $HOSTNAME.pacman -d "$HOSTNAME: Packages installed via pacman")
+    echo -e "\n- Step 2: Save list of currently installed packages to Gist:"
+    GIST_URL=$(
+        (
+            pacman -Qqen
+            echo
+            pacman -Qqem
+        ) | gist -p -f $HOSTNAME.pacmanity -d "$HOSTNAME: List of installed packages"
+    )
 
-  echo "GIST_ID=$GIST_URL" | sed 's/https:\/\/gist.github.com\///g' >> $pkgdir/etc/pacmanity;
+    echo "GIST_ID=$GIST_URL" | sed 's/https:\/\/gist.github.com\///g' >> $pkgdir/etc/pacmanity
 
-  echo -e "\nYour package list is safely backed up, and will be updated"
-  echo -e "automatically every time you install/remove a package using the pacman."
-  echo -e "You can view your backup lists at https://gist.github.com/user"
-  echo -e "or directly at the link below:\n";
-  echo "$GIST_URL";
+    echo "An automatically mantained list of installed packages"
+    echo "has been successfully created in your GitHub Gist."
+    echo "Visit https://gist.github.com or the direct link below:"
+    echo "$GIST_URL"
 }
 
 pacmanity_update(){
-  echo -e "\nUpdating package list backup on GitHub...";
-  if pacman -Qqen | gist -u "$GIST_ID" -f $HOSTNAME.pacman; then
-    echo -e "Success!\n";
-  else
-    echo -e "An error has occured.\nTry running sudo gist --login";
-  fi
+    if (pacman -Qqen; echo; pacman -Qqem) | gist -u "$GIST_ID" -f $HOSTNAME.pacmanity; then
+        echo "Pacmanity: Gist successfully updated."
+    else
+        echo "Pacmanity: ERROR! Try running"
+        echo "sudo gist --login"
+    fi
 }
 
-pacmanity
+# Add Ruby to PATH
+PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+
+# Load config
+[[ -r '/etc/pacmanity' ]] && source $pkgdir/etc/pacmanity
+
+# Determine if fresh install is needed
+if [ -z "$GIST_ID" ]; then
+    echo "Info: Gist is not set up for Pacmanity."
+    echo "Reinstalling Pacmanity can solve this issue."
+else
+    pacmanity_update
+fi
