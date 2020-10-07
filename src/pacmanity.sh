@@ -41,7 +41,7 @@ pacmanity_update(){
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
 # Load config
-[[ -r '/etc/pacmanity' ]] && source $pkgdir/etc/pacmanity
+[[ -r '/etc/pacmanity' ]] && source /etc/pacmanity
 
 # Determine if fresh install is needed
 if [ -z "$GIST_ID" ]; then
