@@ -12,4 +12,4 @@ Target = *
 Description = Running Pacmanity hook...
 Depends = coreutils
 When = PostTransaction
-Exec = /usr/bin/bash -c "source /usr/lib/pacmanity/pacmanity.sh && pacmanity_update"
+Exec = /usr/lib/pacmanity/pacmanity.sh
