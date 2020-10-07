@@ -15,8 +15,6 @@ pacmanity_build() {
         echo -e "\n- Step 2: Save list of currently installed packages to Gist:"
         GIST_URL=$(echo . | gist -p -f $HOSTNAME.pacmanity -d "$HOSTNAME: List of installed packages")
         GIST_ID=$(echo "$GIST_URL" | sed "s|https://gist.github.com/||g")
-
-        mkdir -p "$srcdir/gist_id"
         echo $GIST_ID > "$srcdir/gist_id"
     else
         pacmanity_update
